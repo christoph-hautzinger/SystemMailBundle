@@ -1,0 +1,23 @@
+{
+  "name": "hautzi/system-mail-bundle",
+  "type": "symfony-bundle",
+  "description": "This Bundle provides an nice abstraction for sending system emails",
+  "keywords": ["mail"],
+  "homepage": "https://github.com/christoph-hautzinger/SystemMailBundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christoph Hautzinger",
+      "email": "mail@hautzinger.info"
+    }
+  ],
+  "require": {
+    "php":                        ">=5.4",
+    "symfony/http-kernel":        "~2.3",
+    "symfony/swiftmailer-bundle": "~2.3",
+    "twig/twig":                  "~1.0"
+  },
+  "autoload": {
+    "psr-4": {"Hautzi\\SystemMailBundle\\": ""}
+  }
+}
