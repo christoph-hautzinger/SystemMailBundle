@@ -73,7 +73,7 @@ class MailDefinitionParserXml implements ParserInterface
             return '';
         }
 
-        if (null == $locale) {
+        if (null === $locale) {
             return $this->multilineRemoveIndent((string)$element, 'true' === (string)$element->attributes()['removeIndent']);
         }
 
