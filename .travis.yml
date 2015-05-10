@@ -29,7 +29,7 @@ matrix:
 
 before_script:
   - composer self-update
-  - if [ "$SYMFONY_VERSION" != "" ]; then composer require --dev --no-update symfony/symfony=$SYMFONY_VERSION; fi
+  - composer require --dev --no-update symfony/symfony=$SYMFONY_VERSION;
   - composer update --prefer-source
 
 script: phpunit --coverage-clover=coverage.clover .
