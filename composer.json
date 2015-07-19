@@ -1,7 +1,7 @@
 {
   "name": "hautzi/system-mail-bundle",
   "type": "symfony-bundle",
-  "description": "This Bundle provides an nice abstraction for sending system emails",
+  "description": "This Bundle provides a nice abstraction for sending system emails",
   "keywords": ["mail"],
   "homepage": "https://github.com/christoph-hautzinger/SystemMailBundle",
   "license": "MIT",
@@ -12,7 +12,7 @@
     }
   ],
   "require": {
-    "php":                        ">=5.4",
+    "php":                        ">=5.5",
     "symfony/symfony":            "~2.3",
     "symfony/swiftmailer-bundle": "~2.3"
   },
