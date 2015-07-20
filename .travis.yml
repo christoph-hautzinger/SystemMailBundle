@@ -17,7 +17,7 @@ env:
 install:
   - composer require symfony/symfony:${SYMFONY_VERSION}
 
-script: phpunit --coverage-text Tests/SystemMailer
+script: phpunit --bootstrap vendor/autoload.php --coverage-text Tests/SystemMailer
 
 notifications:
   email:
