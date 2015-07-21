@@ -2,6 +2,8 @@ HautziSystemMailBundle
 ======================
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/7c3d1f06-d02e-44cf-ac24-3cad04ac8ebf/mini.png)](https://insight.sensiolabs.com/projects/7c3d1f06-d02e-44cf-ac24-3cad04ac8ebf)
+[![Build Status](https://travis-ci.org/christoph-hautzinger/SystemMailBundle.svg?branch=master)](https://travis-ci.org/christoph-hautzinger/SystemMailBundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/christoph-hautzinger/SystemMailBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/christoph-hautzinger/SystemMailBundle/?branch=master)
 
 This bundle abstracts away sending system Messages. If instanciating a `Swift_Message` instance in your controllers
 seems fishy to you, this is probably what you are looking for.
