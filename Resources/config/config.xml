@@ -11,8 +11,14 @@
             <argument type="service" id="twig"/>
         </service>
 
+        <service id="hautzi_system_mail.system_mailer.xml.xsd_validator"
+                 class="Hautzi\SystemMailBundle\SystemMailer\XML\XsdValidator" public="false"/>
+
         <service id="hautzi_system_mail.system_mailer.mail_definition.parser_xml"
-                 class="Hautzi\SystemMailBundle\SystemMailer\MailDefinition\MailDefinitionParserXml" public="false"/>
+                 class="Hautzi\SystemMailBundle\SystemMailer\MailDefinition\MailDefinitionParserXml" public="false">
+            <argument type="service" id="hautzi_system_mail.system_mailer.xml.xsd_validator"/>
+            <argument type="expression">service('kernel').locateResource('@HautziSystemMailBundle/Resources/email.xsd')</argument>
+        </service>
 
         <service id="hautzi_system_mail.system_mailer.mailer.swift_mailer"
                  class="Hautzi\SystemMailBundle\SystemMailer\Mailer\SwiftMailer" public="false">

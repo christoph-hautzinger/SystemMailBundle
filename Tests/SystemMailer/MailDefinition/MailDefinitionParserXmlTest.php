@@ -4,9 +4,26 @@
 namespace Hautzi\SystemMailBundle\Tests\SystemMailer\MailDefinition;
 
 use Hautzi\SystemMailBundle\SystemMailer\MailDefinition\MailDefinitionParserXml;
+use Hautzi\SystemMailBundle\SystemMailer\XML\XsdValidator;
 
 class MailDefinitionParserXmlTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var MailDefinitionParserXml
+     */
+    protected $fixture;
+
+    /**
+     * @var XsdValidator
+     */
+    protected $xsdValidator;
+
+    protected function setUp()
+    {
+        $this->xsdValidator = $this->prophesize(XsdValidator::class);
+
+        $this->fixture = new MailDefinitionParserXml($this->xsdValidator->reveal(), 'pathtoxsd.xsd');
+    }
 
     public function testParseXmlWithAllValidValuesNotLocalized()
     {
@@ -28,9 +45,9 @@ class MailDefinitionParserXmlTest extends \PHPUnit_Framework_TestCase
     <messageHtml><![CDATA[<p>_html_message</p>]]></messageHtml>
 </email>
 XML;
+        $this->xsdValidator->validate($xml, 'pathtoxsd.xsd')->shouldBeCalled();
 
-        $fixture = new MailDefinitionParserXml();
-        $parsedMessage = $fixture->parseMailDefinition($xml);
+        $parsedMessage = $this->fixture->parseMailDefinition($xml);
 
         // from
         $this->assertEquals(['from@addr.com' => 'from_name'], $parsedMessage->getFrom());
@@ -82,8 +99,9 @@ XML;
     <messageHtml locale="en"><![CDATA[<p>_html_message_en</p>]]></messageHtml>
 </email>
 XML;
-        $fixture = new MailDefinitionParserXml();
-        $parsedMessage = $fixture->parseMailDefinition($xml, $_locale);
+        $this->xsdValidator->validate($xml, 'pathtoxsd.xsd')->shouldBeCalled();
+
+        $parsedMessage = $this->fixture->parseMailDefinition($xml, $_locale);
 
         $this->assertEquals($_subject, $parsedMessage->getSubject());
         $this->assertEquals($_messageText, $parsedMessage->getMessageText());

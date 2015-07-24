@@ -16,7 +16,10 @@ Hey, why not looking in the code? It's kind of self-explanatory:
 
 ```twig
 // AppBundle/Resources/emails/send-info.xml.twig
-<email>
+<?xml version="1.0"?>
+<email xmlns="http://christoph-hautzinger.de/schema/system-mail-bundle"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://christoph-hautzinger.de/schema/system-mail-bundle http://christoph-hautzinger.de/schema/system-mail-bundle/email-1.0.xsd">
     <to name="{{ user.name }}">{{ user.email }}</to>
     <subject locale="de">Hallo {{ user.name }}</subject>
     <subject locale="en">Hello {{ user.name }}</subject>

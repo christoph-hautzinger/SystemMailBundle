@@ -3,9 +3,30 @@
 namespace Hautzi\SystemMailBundle\SystemMailer\MailDefinition;
 
 use Hautzi\SystemMailBundle\SystemMailer\ParsedMessage;
+use Hautzi\SystemMailBundle\SystemMailer\XML\XsdValidator;
 
 class MailDefinitionParserXml implements ParserInterface
 {
+    /**
+     * @var XsdValidator
+     */
+    private $validator;
+
+    /**
+     * @var string
+     */
+    private $xsdFile;
+
+    /**
+     * @param XsdValidator $validator
+     * @param              $xsdFile
+     */
+    public function __construct(XsdValidator $validator, $xsdFile)
+    {
+        $this->validator = $validator;
+        $this->xsdFile = $xsdFile;
+    }
+
     /**
      * Parse XML Mail Definition string
      *
@@ -27,6 +48,8 @@ class MailDefinitionParserXml implements ParserInterface
      */
     public function parseMailDefinition($xml, $locale = null)
     {
+        $this->validator->validate($xml, $this->xsdFile);
+
         $parsed = simplexml_load_string($xml);
 
         $message = new ParsedMessage();

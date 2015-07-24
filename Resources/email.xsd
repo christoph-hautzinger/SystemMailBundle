@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://christoph-hautzinger.de/schema/system-mail-bundle"
+           xmlns="http://christoph-hautzinger.de/schema/system-mail-bundle"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="addr">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="name" type="xs:string" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="localized_message_body">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="locale" type="xs:string"  />
+                <xs:attribute name="removeIndent" type="xs:boolean" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:element name="email">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="from" type="addr" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="replyTo" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="to" type="addr" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="cc" type="addr" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="bcc" type="addr" minOccurs="0" maxOccurs="unbounded"/>
+
+                <xs:element name="subject" type="localized_message_body" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="messageHtml" type="localized_message_body" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="messageText" type="localized_message_body" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
