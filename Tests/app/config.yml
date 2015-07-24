@@ -1,0 +1,6 @@
+framework:
+    secret: "so secret ;)"
+
+twig: ~
+
+swiftmailer: ~
