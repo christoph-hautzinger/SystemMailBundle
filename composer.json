@@ -15,7 +15,7 @@
     "php":                        ">=5.5",
     "twig/twig":                  "~2.0|~1.0",
     "symfony/http-kernel":        "~2.7|~3.0|~4.0",
-    "symfony/swiftmailer-bundle": "~2.3"
+    "symfony/swiftmailer-bundle": "~2.3|~3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.6"
