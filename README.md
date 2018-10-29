@@ -37,7 +37,7 @@ Then send out this mail explicitly by simply calling:
 
 ```php
 // from your code simply call
-$container->get('system_mailer')->send('App:send-info', [
+$container->get('system_mailer')->send('emails/send-info.xml.twig', [
     'user' => $user,
 ]);
 ```
@@ -51,7 +51,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```bash
-$ composer require hautzi/system-mail-bundle "~0.1"
+$ composer require hautzi/system-mail-bundle
 ```
 
 This command requires you to have Composer installed globally, as explained
@@ -121,13 +121,13 @@ Examples
 $systemMailer = $container->get('system_mailer');
 
 // sends out AppBundle/Resources/emails/registration/confirmUser.xml.twig
-$systemMailer->send('App:registration/confirmUser', ['user' => $user]);
+$systemMailer->send('emails/registration/confirmUser.xml.twig', ['user' => $user]);
 
 // force locale of sent mail (when the recipient speaks another language than the user in the session)
-$systemMailer->send('App:info-mail', ['user' => $user], 'de');
+$systemMailer->send('emails/info-mail.xml.twig', ['user' => $user], 'de');
 
 // attach file to mail (or do something else with the Swift_Message instance)
-$systemMailer->send('App:message-with-pdf', [], null, function (\Swift_Message $message) {
+$systemMailer->send('emails/message-with-pdf.xml.twig', [], null, function (\Swift_Message $message) {
      $message->attach(\Swift_Attachment::fromPath('my-document.pdf'))
 });
 ```

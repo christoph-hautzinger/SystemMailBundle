@@ -4,36 +4,31 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="hautzi_system_mail.system_mailer.mail_definition.provider_symfony"
-                 class="Hautzi\SystemMailBundle\SystemMailer\MailDefinition\MailDefinitionProviderSymfony"
+        <service id="Hautzi\SystemMailBundle\SystemMailer\MailDefinition\MailDefinitionProviderSymfony"
                  public="false">
-            <argument type="service" id="kernel"/>
             <argument type="service" id="twig"/>
         </service>
 
-        <service id="hautzi_system_mail.system_mailer.xml.xsd_validator"
-                 class="Hautzi\SystemMailBundle\SystemMailer\XML\XsdValidator" public="false"/>
+        <service id="Hautzi\SystemMailBundle\SystemMailer\XML\XsdValidator" public="false"/>
 
-        <service id="hautzi_system_mail.system_mailer.mail_definition.parser_xml"
-                 class="Hautzi\SystemMailBundle\SystemMailer\MailDefinition\MailDefinitionParserXml" public="false">
-            <argument type="service" id="hautzi_system_mail.system_mailer.xml.xsd_validator"/>
+        <service id="Hautzi\SystemMailBundle\SystemMailer\MailDefinition\MailDefinitionParserXml" public="false">
+            <argument type="service" id="Hautzi\SystemMailBundle\SystemMailer\XML\XsdValidator"/>
             <argument type="expression">service('kernel').locateResource('@HautziSystemMailBundle/Resources/email.xsd')</argument>
         </service>
 
-        <service id="hautzi_system_mail.system_mailer.mailer.swift_mailer"
-                 class="Hautzi\SystemMailBundle\SystemMailer\Mailer\SwiftMailer" public="false">
+        <service id="Hautzi\SystemMailBundle\SystemMailer\Mailer\SwiftMailer" public="false">
             <argument type="service" id="mailer"/>
         </service>
 
 
-        <service id="hautzi_system_mail.system_mailer" class="Hautzi\SystemMailBundle\SystemMailer\SystemMailer">
-            <argument type="service" id="hautzi_system_mail.system_mailer.mail_definition.provider_symfony"/>
-            <argument type="service" id="hautzi_system_mail.system_mailer.mail_definition.parser_xml"/>
-            <argument type="service" id="hautzi_system_mail.system_mailer.mailer.swift_mailer"/>
+        <service id="Hautzi\SystemMailBundle\SystemMailer\SystemMailer">
+            <argument type="service" id="Hautzi\SystemMailBundle\SystemMailer\MailDefinition\MailDefinitionProviderSymfony"/>
+            <argument type="service" id="Hautzi\SystemMailBundle\SystemMailer\MailDefinition\MailDefinitionParserXml"/>
+            <argument type="service" id="Hautzi\SystemMailBundle\SystemMailer\Mailer\SwiftMailer"/>
             <argument type="expression">service('request_stack').getMasterRequest().getLocale()</argument>
             <argument></argument>
         </service>
 
-        <service id="system_mailer" alias="hautzi_system_mail.system_mailer"/>
+        <service id="system_mailer" alias="Hautzi\SystemMailBundle\SystemMailer\SystemMailer"/>
     </services>
 </container>

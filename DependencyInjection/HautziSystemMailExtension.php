@@ -22,7 +22,7 @@ class HautziSystemMailExtension extends Extension
 
         // inject default configuration
         $container
-            ->getDefinition('hautzi_system_mail.system_mailer')
+            ->getDefinition('Hautzi\SystemMailBundle\SystemMailer\SystemMailer')
             ->replaceArgument(4, $config['defaults']);
     }
 }
