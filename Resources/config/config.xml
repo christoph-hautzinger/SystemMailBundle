@@ -25,7 +25,7 @@
             <argument type="service" id="Hautzi\SystemMailBundle\SystemMailer\MailDefinition\MailDefinitionProviderSymfony"/>
             <argument type="service" id="Hautzi\SystemMailBundle\SystemMailer\MailDefinition\MailDefinitionParserXml"/>
             <argument type="service" id="Hautzi\SystemMailBundle\SystemMailer\Mailer\SwiftMailer"/>
-            <argument type="expression">service('request_stack').getMasterRequest().getLocale()</argument>
+            <argument type="expression">service('translator').getLocale()</argument>
             <argument></argument>
         </service>
 
